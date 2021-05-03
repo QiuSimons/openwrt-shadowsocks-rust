@@ -37,8 +37,6 @@ jobs:
 
       - name: Build ${{ matrix.target }}
         timeout-minutes: 120
-        env:
-          EXTRA_FEATURES: stream-cipher
         run: |
           cd build
           ./build-release -t ${{ matrix.target }}
