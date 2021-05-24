@@ -35,6 +35,11 @@ jobs:
       - name: Install Cross
         run: cargo install cross
 
+      - name: Apply Patches
+        run: |
+          [ -z "$(ls -A "patches")" ] && exit 0
+          for i in "patches"/*; do patch -p1 < "$i"; done
+
       - name: Build ${{ matrix.target }}
         timeout-minutes: 120
         run: |
